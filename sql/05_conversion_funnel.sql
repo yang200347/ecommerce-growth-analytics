@@ -13,7 +13,8 @@ WITH relevant_events AS (
   FROM
     `bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_*`
   WHERE
-    _TABLE_SUFFIX BETWEEN '20201101' AND '20210131'
+    -- Exclude dates with incomplete add_to_cart tracking
+    _TABLE_SUFFIX BETWEEN '20201116' AND '20210131'
     AND event_name IN (
       'view_item',
       'add_to_cart',
